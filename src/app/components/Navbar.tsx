@@ -49,7 +49,7 @@ const Navbar = ({loctaion}: props) => {
     setcity(value)
     if(value.length >= 3) {
       try {
-        const response = await axios.get(`https://api.openweathermap.org/data/2.5/find?q=${value}&appid=${API_KEY}`)
+        const response = await axios.get(`https://api.openweathermap.org/data/2.5/find?q=${value}&appid=e630c60f78e61a8fef3603bad5156394`)
         const suggestions = response.data.list.map((item: any) => item.name)
         setsuggestions(suggestions)
         setShowSuggestions(true)
