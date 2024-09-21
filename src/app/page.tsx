@@ -83,7 +83,7 @@ export default  function Home() {
   const [loadingCity] = useAtom(loadingCityAtom)
   const { isLoading, error, data, refetch } = useQuery<WeatherData>('repoData', async () =>
     {
-      const { data } = await axios.get(`https://api.openweathermap.org/data/2.5/forecast?q=${place}&appid=${process.env.NEXT_PUBLIC_WEATHER_KEY}&cnt=56`)
+      const { data } = await axios.get(`https://api.openweathermap.org/data/2.5/forecast?q=${place}&appid=e630c60f78e61a8fef3603bad5156394&cnt=56`)
 
       return data
     }
