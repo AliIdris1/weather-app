@@ -12,8 +12,8 @@ type props = {loctaion?: string}
 
 
 
-const API_KEY = process.env.NEXT_PUBLIC_WEATHER_KEY
 const Navbar = ({loctaion}: props) => {
+  const API_KEY = process.env.NEXT_PUBLIC_WEATHER_KEY
   const [city, setcity] = useState("")
   const [error, seterror] = useState("")
 
@@ -41,7 +41,7 @@ const Navbar = ({loctaion}: props) => {
         setLoadingCity(false)
         setShowSuggestions(false)
         setplace(city)
-      }, 500);
+      }, 1500);
     }
   }
 
@@ -49,7 +49,7 @@ const Navbar = ({loctaion}: props) => {
     setcity(value)
     if(value.length >= 3) {
       try {
-        const response = await axios.get(`https://api.openweathermap.org/data/2.5/find?q=${value}&appid=e630c60f78e61a8fef3603bad5156394`)
+        const response = await axios.get(`https://api.openweathermap.org/data/2.5/find?q=${value}&appid=${API_KEY}`)
         const suggestions = response.data.list.map((item: any) => item.name)
         setsuggestions(suggestions)
         setShowSuggestions(true)
@@ -76,7 +76,7 @@ const Navbar = ({loctaion}: props) => {
           setTimeout(() => {
             setLoadingCity(false);
             setplace(response.data.name);
-          }, 500);
+          }, 1500);
         } catch (error) {
           
         }
@@ -112,7 +112,7 @@ const Navbar = ({loctaion}: props) => {
     <section className='flex max-w-7xl px-3 md:hidden'>
 
     
-    <div className='relative '>
+    <div className='relative'>
                 <SearchBox onSubmit={handleSubmitSearch} className='relative' value={city} onChange={(e => handleinputchange(e.target.value))}/>
                 <SuggestionBox 
                 {...{
